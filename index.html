@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Twesigye Niclous — Aspiring Data Analyst</title>
+  <meta name="description" content="Twesigye Niclous — Aspiring Data Analyst | Portfolio / Landing page" />
+  <style>
+    :root{
+      --bg: #ffffff;
+      --muted: #f5f6f8;
+      --card: #fbfcfd;
+      --text: #0f1724;
+      --mutedText: #52606d;
+      --accent: #0b556b; /* teal/navy accent */
+      --accent-2: #084257;
+      --glass: rgba(11,85,107,0.06);
+      --radius: 14px;
+      --maxwidth: 1100px;
+      --gap: 24px;
+      --shadow: 0 6px 18px rgba(15,23,36,0.06);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Reset & layout */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),var(--muted));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+      font-size:16px;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--maxwidth);
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:var(--gap);
+      align-items:start;
+    }
+
+    /* Mobile */
+    @media (max-width:880px){
+      .container{
+        grid-template-columns: 1fr;
+        padding:0 12px;
+      }
+      body{padding:18px}
+    }
+
+    /* Sidebar card */
+    .sidebar{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:28px;
+      height:fit-content;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .monogram{
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:20px;
+      box-shadow:0 6px 18px rgba(8,66,82,0.12);
+    }
+    .name{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .name .title{
+      font-weight:700;
+      font-size:18px;
+      letter-spacing: -0.02em;
+    }
+    .name .subtitle{
+      color:var(--mutedText);
+      font-size:13px;
+    }
+
+    .lang-toggle{
+      margin-top:16px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang-btn{
+      border:1px solid rgba(8,66,82,0.07);
+      background:transparent;
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:14px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang-btn.active{
+      background:var(--glass);
+      border-color:transparent;
+    }
+
+    .contact-quick{
+      margin-top:20px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .pill{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      padding:10px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(11,85,107,0.03), rgba(11,85,107,0.01));
+      border:1px solid rgba(11,85,107,0.04);
+      font-size:14px;
+    }
+    .cta{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+    }
+    .btn{
+      border:0;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 8px 20px rgba(11,85,107,0.12);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--accent-2);
+      border:1px solid rgba(8,66,82,0.08);
+      box-shadow:none;
+    }
+
+    /* Main content */
+    main{
+      background:transparent;
+      border-radius:var(--radius);
+      padding:28px;
+      min-height:320px;
+    }
+    section.card{
+      background:var(--card);
+      border-radius:12px;
+      padding:22px;
+      margin-bottom:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    h2{
+      margin:0 0 12px 0;
+      font-size:18px;
+      color:var(--accent-2);
+    }
+    p.lead{
+      margin:0 0 10px 0;
+      color:var(--mutedText);
+      font-size:15px;
+    }
+
+    /* Skills grid */
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+    }
+    @media (max-width:520px){
+      .skills{grid-template-columns:1fr}
+    }
+    .skill-item{
+      padding:10px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(11,85,107,0.02), rgba(11,85,107,0.01));
+      border:1px solid rgba(8,66,82,0.035);
+      font-size:14px;
+      color:var(--mutedText);
+    }
+
+    /* Experience list */
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .job{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:start;
+    }
+    .job h3{
+      margin:0;
+      font-size:15px;
+      color:var(--text);
+    }
+    .job .meta{
+      color:var(--mutedText);
+      font-size:13px;
+    }
+    .job p{margin:8px 0 0 0;color:var(--mutedText);font-size:14px}
+
+    /* Achievements list */
+    .ach-list{display:flex;flex-direction:column;gap:10px}
+    .ach{display:flex;gap:10px;align-items:flex-start}
+    .bullet{width:8px;height:8px;border-radius:4px;background:var(--accent)}
+
+    /* Education/contact form */
+    .edu-list{display:flex;flex-direction:column;gap:8px}
+    .edu .edu-meta{color:var(--mutedText);font-size:14px}
+
+    form.contact-form{
+      display:grid;
+      gap:10px;
+      grid-template-columns:1fr 1fr;
+    }
+    @media (max-width:720px){ form.contact-form{grid-template-columns:1fr} }
+
+    input,textarea{
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(15,23,36,0.06);
+      font-size:14px;
+      background:white;
+      resize:vertical;
+    }
+    textarea{min-height:108px}
+
+    .form-actions{
+      grid-column:1/-1;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      color:var(--mutedText);
+      font-size:13px;
+    }
+
+    /* subtle reveal animation */
+    .reveal{opacity:0; transform:translateY(12px); transition: all 520ms cubic-bezier(.2,.9,.25,1);}
+    .reveal.visible{opacity:1; transform:none;}
+
+    /* small utilities */
+    .muted{color:var(--mutedText)}
+    .tag{display:inline-block;font-size:13px;padding:6px 8px;border-radius:999px;border:1px solid rgba(15,23,36,0.04);background:#fff;font-weight:600}
+    .small{font-size:13px;color:var(--mutedText)}
+
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <!-- SIDEBAR -->
+    <aside class="sidebar reveal" aria-labelledby="profileName">
+      <div class="brand">
+        <div class="monogram" aria-hidden="true">NT</div>
+        <div class="name">
+          <div id="profileName" class="title">Twesigye Niclous</div>
+          <div class="subtitle" data-i18n="primaryTitle">Aspiring Data Analyst</div>
+        </div>
+      </div>
+
+      <div class="lang-toggle" aria-hidden="false" title="Toggle language">
+        <button id="btn-en" class="lang-btn active" aria-pressed="true" data-lang="en">🇬🇧 English</button>
+        <button id="btn-de" class="lang-btn" aria-pressed="false" data-lang="de">🇩🇪 Deutsch</button>
+      </div>
+
+      <div class="contact-quick">
+        <div class="pill">
+          <div class="small" data-i18n="location">Location</div>
+          <div class="small muted">Qatar</div>
+        </div>
+        <div class="pill">
+          <div class="small" data-i18n="role">Role</div>
+          <div class="small muted" data-i18n="primaryTitleSmall">Aspiring Data Analyst</div>
+        </div>
+
+        <div class="cta">
+          <button id="downloadBtn" class="btn" type="button" aria-label="Download CV">Download CV</button>
+          <button id="emailBtn" class="btn secondary" type="button" aria-label="Contact">Contact</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <!-- ABOUT -->
+      <section id="about" class="card reveal">
+        <h2 data-i18n="aboutHeading">About Me</h2>
+        <p class="lead" data-i18n="aboutLead">
+          Analytical and detail-oriented professional with over 4 years of experience in data processing and management, and business systems optimization. 
+          Capable of transforming raw data into actionable insights to support economic decision-making, data analysis, and operational efficiency. 
+          Skilled in ERP, SAP, and Google Sheets, with a strong foundation in computer science and a practical understanding of global supply chains and market dynamics. Passionate about leveraging data to drive strategic outcomes in trade, education, and technical environments.
+        </p>
+        <div class="tag" data-i18n="locationTag">Qatar • Available</div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="card reveal" aria-labelledby="skillsHeading">
+        <h2 id="skillsHeading" data-i18n="skillsHeading">Skills</h2>
+        <div class="skills" aria-hidden="false">
+          <div class="skill-item" data-i18n="skill_erp">ERP, Power BI & Excel — proficient in systems and data tools</div>
+          <div class="skill-item" data-i18n="skill_market">Market trend analysis — benchmarking and strategic planning</div>
+          <div class="skill-item" data-i18n="skill_inventory">Inventory & coordination — replenishment and fill-rate optimization</div>
+          <div class="skill-item" data-i18n="skill_interpersonal">Interpersonal — fluent English, strong stakeholder engagement</div>
+          <div class="skill-item" data-i18n="skill_procurement">Procurement operations — purchase orders, claims, regulatory compliance</div>
+          <div class="skill-item" data-i18n="skill_ethics">Attention to detail & ethics — high accuracy, integrity, operational discipline</div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="card reveal" aria-labelledby="expHeading">
+        <h2 id="expHeading" data-i18n="experienceHeading">Experience</h2>
+        <div class="timeline">
+          <div class="job">
+            <div>
+              <h3 data-i18n="job1_title">Family Food Center, Qatar — Import Data Coordinator</h3>
+              <div class="meta small" data-i18n="job1_time">2022 – Present</div>
+              <p data-i18n="job1_desc">Analyze procurement trends and seasonal data to support trade decisions and optimize purchasing cycles; Utilized SAP ERP and Excel for data visualization, forecasting, and supplier performance tracking; Maintain structured databases for vendor profiles, pricing benchmarks, and product movement; Collaborating with logistics and retail teams to ensure timely delivery and inventory accuracy; Conduct market research and competitor analysis to inform strategic sourcing and pricing models through market visits; Conduct store visits to assess performance, gather insights, and report findings; Handle supplier claims for damages, shortages, and any other discrepancies; Benchmark competitor pricing and promotions, presenting strategies to improve competitiveness</p>
+            </div>
+            <div class="meta small">2022–Present</div>
+          </div>
+
+          <div class="job">
+            <div>
+              <h3 data-i18n="job2_title">Family Food Center, Qatar — Data Entry Specialist</h3>
+              <div class="meta small" data-i18n="job2_time">2021 – 2022</div>
+              <p data-i18n="job2_desc">Managed inventory data entry and validation for procurement and retail operations; Supported documentation and compliance processes and improved database accuracy by approximately 30%; Ensured data integrity and normalization; Implemented logic checks and conditional formatting to catch anomalies.</p>
+            </div>
+            <div class="meta small">2021–2022</div>
+          </div>
+
+          <div class="job">
+            <div>
+              <h3 data-i18n="job3_title">Compass Group, Qatar — Facilities Management Personnel</h3>
+              <div class="meta small" data-i18n="job3_time">2019 – 2021</div>
+              <p data-i18n="job3_desc">Applied logic-based automation to assign tasks based on priority, location, or risk level; Used Excel and Google Sheets to track incidents, generate reports, and ensure regulatory compliance.; Used data analysis tools to identify high-risk zones or patterns in safety incidents</p>
+            </div>
+            <div class="meta small">2019–2021</div>
+          </div>
+
+          <div class="job">
+            <div>
+              <h3 data-i18n="job4_title">Fabrication Systems U Ltd, Uganda — Project Manager</h3>
+              <div class="meta small" data-i18n="job4_time">2016 – 2018</div>
+              <p data-i18n="job4_desc">Oversaw procurement and inventory programs for engineering projects; Coordinated with technical teams and suppliers to meet project timelines; Applied planning and negotiation skills in a cross-functional environment</p>
+            </div>
+            <div class="meta small">2016–2018</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="card reveal" aria-labelledby="eduHeading">
+        <h2 id="eduHeading" data-i18n="educationHeading">Education</h2>
+        <div class="edu-list">
+          <div class="edu">
+            <div>
+              <strong>Makerere University (H+) — Diploma in Computer Science and Information Technology</strong>
+              <div class="edu-meta small">2011 – 2013</div>
+            </div>
+          </div>
+          <div class="edu">
+            <div>
+              <strong>Buddo Secondary School — U.A.C.E</strong>
+              <div class="edu-meta small">Subjects: Physics, Mathematics, Economics, Art</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS -->
+      <section id="achievements" class="card reveal" aria-labelledby="achHeading">
+        <h2 id="achHeading" data-i18n="achievementsHeading">Achievements</h2>
+        <div class="ach-list">
+          <div class="ach"><div class="bullet" aria-hidden="true"></div><div class="small" data-i18n="ach1">Reduced inventory errors by 30% through process improvements and validations.</div></div>
+          <div class="ach"><div class="bullet" aria-hidden="true"></div><div class="small" data-i18n="ach2">Led initiatives for procurement staff training and SOP adoption.</div></div>
+          <div class="ach"><div class="bullet" aria-hidden="true"></div><div class="small" data-i18n="ach3">Improved stock turn and reduced holding costs through better forecasting.</div></div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="card reveal" aria-labelledby="contactHeading">
+        <h2 id="contactHeading" data-i18n="contactHeading">Contact</h2>
+        <p class="small" data-i18n="contactLead">Prefer email — use the form or click Contact to open your mail client.</p>
+
+        <form id="contactForm" class="contact-form" novalidate>
+          <input id="name" name="name" placeholder="Your name" aria-label="Your name" required />
+          <input id="email" name="email" type="email" placeholder="your@email.com" aria-label="Email address" required />
+          <input id="subject" name="subject" placeholder="Subject" aria-label="Subject" required />
+          <textarea id="message" name="message" placeholder="Message" aria-label="Message" required></textarea>
+
+          <div class="form-actions">
+            <div class="small muted">Or email: <a href="mailto:twesigyeniclous@gmail.com" id="mailtoLink">twesigyeniclous@gmail.com</a></div>
+            <div style="display:flex; gap:8px;">
+              <button type="reset" class="btn secondary" aria-label="Reset form" data-i18n="reset">Reset</button>
+              <button id="submitBtn" type="submit" class="btn" aria-label="Send message" data-i18n="send">Send</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <footer class="reveal">
+        <div class="small muted" data-i18n="footerLeft">© <span id="year"></span> Twesigye Niclous</div>
+        <div class="small muted" data-i18n="footerRight">Aspiring Data Analyst — Qatar</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Local JS -->
+  <script>
+    // ---------------------------
+    // Basic initializations
+    // ---------------------------
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Small local "download CV" behavior -- placeholder PDF from local path if present,
+    // otherwise show a toast-like message.
+    const downloadBtn = document.getElementById('downloadBtn');
+    downloadBtn.addEventListener('click', () => {
+      // If you have a local file named "Niq_Twes_CV.pdf" in same folder, this will open it.
+      // Otherwise it will open a new mailto as fallback.
+      const localPath = './Twesigye-cv.pdf';
+      fetch(localPath, {method:'HEAD'}).then(r=>{
+        if (r.ok) {
+          window.open(localPath, '_blank');
+        } else {
+          alert('No local CV found. You can add "Twesigye-cv.pdf" to this folder or use the Contact button.');
+        }
+      }).catch(()=> {
+        // fetch may fail on file:// in some browsers; graceful fallback:
+        alert('No local CV found. Add "Twesigye-cv.pdf" next to this HTML file or use the Contact button.');
+      });
+    });
+
+    // Email button scrolls to contact or opens mailto
+    const emailBtn = document.getElementById('emailBtn');
+    emailBtn.addEventListener('click', () => {
+      const contact = document.getElementById('contact');
+      if (contact) {
+        contact.scrollIntoView({behavior:'smooth', block:'center'});
+        const em = document.getElementById('email');
+        if (em) em.focus();
+      }
+    });
+
+    // ---------------------------
+    // Contact form behavior: validate and mailto
+    // ---------------------------
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim() || 'Contact';
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill name, email and message.');
+        return;
+      }
+      // Basic email pattern
+      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      // Prepare mailto fallback (since this is local)
+      const mailTo = 'twesigyeniclous@gmail.com';
+      const body = encodeURIComponent(
+        'Name: ' + name + '\\n' +
+        'Email: ' + email + '\\n\\n' +
+        message
+      );
+      const href = `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      // open mail client
+      window.location.href = href;
+    });
+
+    // ---------------------------
+    // Simple reveal on scroll (IntersectionObserver)
+    // ---------------------------
+    const observers = [];
+    const revealElems = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          // optionally unobserve for performance
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.08});
+
+    revealElems.forEach(el=> io.observe(el));
+
+    // ---------------------------
+    // Language toggle (simple i18n)
+    // ---------------------------
+    const translations = {
+      en: {
+        primaryTitle: 'Aspiring Data Analyst',
+        primaryTitleSmall: 'Aspiring Data Analyst',
+        location: 'Location',
+        aboutHeading: 'About Me',
+        aboutLead: 'Analytical and detail-oriented professional with over 4 years of experience in data processing and management, and business systems optimization. Capable of transforming raw data into actionable insights to support economic decision-making, data analysis, and operational efficiency. Skilled in ERP, SAP, and Google Sheets, with a strong foundation in computer science and a practical understanding of global supply chains and market dynamics. Passionate about leveraging data to drive strategic outcomes in trade, education, and technical environments.',
+        locationTag: 'Qatar • Available',
+        skillsHeading: 'Skills',
+        skill_erp: 'ERP, Power BI & Excel — proficient in systems and data tools',
+        skill_market: 'Market trend analysis — benchmarking and strategic planning',
+        skill_inventory: 'Inventory & coordination — replenishment and fill-rate optimization',
+        skill_interpersonal: 'Interpersonal — fluent English, strong stakeholder engagement',
+        skill_procurement: 'Procurement operations — purchase orders, claims, regulatory compliance',
+        skill_ethics: 'Attention to detail & ethics — high accuracy, integrity, operational discipline',
+        experienceHeading: 'Experience',
+        job1_title: 'Familly Food Center, Qatar — Import Coordinator / Buyer',
+        job1_time: '2022 – Present',
+        job1_desc: 'Analyze procurement trends and seasonal data to support trade decisions and optimize purchasing cycles; Utilized SAP ERP and Excel for data visualization, forecasting, and supplier performance tracking; Maintain structured databases for vendor profiles, pricing benchmarks, and product movement; Collaborating with logistics and retail teams to ensure timely delivery and inventory accuracy; Conduct market research and competitor analysis to inform strategic sourcing and pricing models through market visits; Conduct store visits to assess performance, gather insights, and report findings; Handle supplier claims for damages, shortages, and any other discrepancies; Benchmark competitor pricing and promotions, presenting strategies to improve competitiveness',
+        job2_title: 'Family Food Center, Qatar — Data Entry Specialist',
+        job2_time: '2021 – 2022',
+        job2_desc: 'Managed inventory data entry and validation for procurement and retail operations; Supported documentation and compliance processes and improved database accuracy by approximately 30%; Ensured data integrity and normalization; Implemented logic checks and conditional formatting to catch anomalies.',
+        job3_title: 'Compass Group, Qatar — Facilities Management Personnel',
+        job3_time: '2019 – 2021',
+        job3_desc: 'Applied logic-based automation to assign tasks based on priority, location, or risk level; Used Excel and Google Sheets to track incidents, generate reports, and ensure regulatory compliance.; Used data analysis tools to identify high-risk zones or patterns in safety incidents.',
+        job4_title: 'Fabrication Systems U Ltd, Uganda — Project Manager',
+        job4_time: '2016 – 2018',
+        job4_desc: 'Oversaw procurement and inventory programs for engineering projects; Coordinated with technical teams and suppliers to meet project timelines; Applied planning and negotiation skills in a cross-functional environment',
+        educationHeading: 'Education',
+        achievementsHeading: 'Achievements',
+        ach1: 'Reduced inventory errors by 30% through process improvements and validations.',
+        ach2: 'Led initiatives for procurement staff training and SOP adoption.',
+        ach3: 'Improved stock turn and reduced holding costs through better forecasting.',
+        contactHeading: 'Contact',
+        contactLead: 'Prefer email — use the form or click Contact to open your mail client.',
+        reset: 'Reset',
+        send: 'Send',
+        footerLeft: '© <span id="yearTxt"></span> Twesigye Niclous',
+        footerRight: 'Aspiring Data Analyst — Qatar'
+      },
+      de: {
+        primaryTitle: 'Angehender Datenanalyst',
+        primaryTitleSmall: 'Angehender Datenanalyst',
+        location: 'Standort',
+        aboutHeading: 'Über mich',
+        aboutLead: 'Analytischer und detailorientierter Experte mit über 4 Jahren Erfahrung in Datenverarbeitung und -management sowie der Optimierung von Geschäftssystemen. Fähig, Rohdaten in umsetzbare Erkenntnisse umzuwandeln, um wirtschaftliche Entscheidungen, Datenanalysen und die Steigerung der Betriebseffizienz zu unterstützen. Kenntnisse in ERP, SAP und Google Sheets, fundierte Informatikkenntnisse und praktische Kenntnisse globaler Lieferketten und Marktdynamiken. Leidenschaftlich daran interessiert, Daten zu nutzen, um strategische Ergebnisse in Handel, Bildung und technischen Umgebungen zu erzielen.',
+        locationTag: 'Katar • Verfügbar',
+        skillsHeading: 'Fähigkeiten',
+        skill_erp: 'ERP, Power BI & Excel — versiert mit Systemen und Datentools',
+        skill_market: 'Marktanalysen — Benchmarking und strategische Planung',
+        skill_inventory: 'Bestandsführung & Koordination — Auffüllung und Optimierung der Versorgungsquoten',
+        skill_interpersonal: 'Soziale Kompetenzen — fließend in Englisch, starke Stakeholder-Interaktion',
+        skill_procurement: 'Beschaffungsprozesse — Bestellungen, Reklamationen, regulatorische Einhaltung',
+        skill_ethics: 'Detailorientierung & Ethik — hohe Genauigkeit, Integrität, betriebliche Disziplin',
+        experienceHeading: 'Berufserfahrung',
+        job1_title: 'Familly Food Center, Katar — Import-Koordinator / Einkäufer',
+        job1_time: '2022 – Heute',
+        job1_desc: 'Analysieren Sie Beschaffungstrends und saisonale Daten, um Handelsentscheidungen zu unterstützen und Einkaufszyklen zu optimieren. Verwenden Sie SAP ERP und Excel zur Datenvisualisierung, Prognose und Leistungsverfolgung von Lieferanten. Pflegen Sie strukturierte Datenbanken für Lieferantenprofile, Preisbenchmarks und Produktbewegungen. Arbeiten Sie mit Logistik- und Einzelhandelsteams zusammen, um pünktliche Lieferung und Bestandsgenauigkeit sicherzustellen. Führen Sie Marktforschung und Wettbewerbsanalysen durch, um durch Marktbesuche strategische Beschaffungs- und Preismodelle zu erstellen. Führen Sie Ladenbesuche durch, um die Leistung zu beurteilen, Erkenntnisse zu sammeln und Ergebnisse zu melden. Bearbeiten Sie Schadensersatzansprüche von Lieferanten wegen Mängeln, Engpässen und anderen Unstimmigkeiten. Vergleichen Sie die Preise und Werbeaktionen der Konkurrenz und präsentieren Sie Strategien zur Verbesserung der Wettbewerbsfähigkeit.',
+        job2_title: 'Family Food Center, Katar — Datenerfasser',
+        job2_time: '2020 – 2022',
+        job2_desc: 'Daten gepflegt und validiert, Genauigkeit erhöht und Berichte/Operationen unterstützt.',
+        job3_title: 'Compass Group, Katar — Facility-Management-Personal',
+        job3_time: '2019 – 2020',
+        job3_desc: 'Angewandte logikbasierte Automatisierung zur Zuweisung von Aufgaben nach Priorität, Standort oder Risikostufe; Verwendung von Excel und Google Sheets zur Verfolgung von Vorfällen, Erstellung von Berichten und Sicherstellung der Einhaltung gesetzlicher Vorschriften; Verwendung von Datenanalysetools zur Identifizierung von Hochrisikozonen oder Mustern bei Sicherheitsvorfällen.',
+        job4_title: 'Fabrication Systems U Ltd, Uganda — Projektleiter',
+        job4_time: '2016 – 2018',
+        job4_desc: 'Beaufsichtigte Beschaffungs- und Bestandsprogramme für Ingenieurprojekte; Koordinierte mit technischen Teams und Lieferanten, um die Projektzeitpläne einzuhalten; Angewandte Planungs- und Verhandlungsfähigkeiten in einem funktionsübergreifenden Umfeld.',
+        educationHeading: 'Ausbildung',
+        achievementsHeading: 'Erfolge',
+        ach1: 'Bestandsfehler um 30 % reduziert durch Prozessverbesserungen und Validierungen.',
+        ach2: 'Initiativen zur Schulung des Beschaffungspersonals geleitet.',
+        ach3: 'Lagerumschlag verbessert und Haltekosten durch bessere Prognosen gesenkt.',
+        contactHeading: 'Kontakt',
+        contactLead: 'Bevorzugt per E-Mail — Formular verwenden oder Kontakt drücken, um Ihr Mailprogramm zu öffnen.',
+        reset: 'Zurücksetzen',
+        send: 'Senden',
+        footerLeft: '© <span id="yearTxt"></span> Twesigye Niclous',
+        footerRight: 'Angehender Datenanalyst — Katar'
+      }
+    };
+
+    // Apply translations to elements with data-i18n attribute
+    function applyLanguage(lang) {
+      const elems = document.querySelectorAll('[data-i18n]');
+      elems.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // toggle active class on buttons
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        const isActive = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      // accessibility: update year in footer translation container if present
+      const yearTxt = document.getElementById('yearTxt');
+      if (yearTxt) yearTxt.textContent = new Date().getFullYear();
+    }
+
+    // init default language
+    let currentLang = 'en';
+    applyLanguage(currentLang);
+
+    document.getElementById('btn-en').addEventListener('click', ()=> {
+      currentLang = 'en';
+      applyLanguage('en');
+    });
+    document.getElementById('btn-de').addEventListener('click', ()=> {
+      currentLang = 'de';
+      applyLanguage('de');
+    });
+
+    // ---------------------------
+    // Small progressive enhancement: keyboard access to language toggle
+    // ---------------------------
+    document.querySelectorAll('.lang-btn').forEach(btn=>{
+      btn.addEventListener('keydown', (e)=>{
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+
+    // ---------------------------
+    // Simple focus outlines improvement for keyboard users
+    // ---------------------------
+    (function(){
+      function handleFirstTab(e) {
+        if (e.key === 'Tab') {
+          document.body.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+
+  </script>
+</body>
+</html>
